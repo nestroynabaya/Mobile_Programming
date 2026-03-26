@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}// ─── Screen
+}// Screen
 @Composable
 fun AttendanceScreen() {
     var searchQuery by remember { mutableStateOf("") }
@@ -56,7 +56,7 @@ fun AttendanceScreen() {
             .fillMaxSize()
             .systemBarsPadding()
     ){
-// ── Search Bar
+// Search Bar
         OutlinedTextField(
             value = searchQuery,
             onValueChange = { searchQuery = it },
@@ -82,14 +82,14 @@ fun AttendanceScreen() {
                 focusedBorderColor = MaterialTheme.colorScheme.primary
             )
         )
-// ── Student count summary
+// Student count summary
         Text(
             text = "${filteredStudents.size} student(s) · ${presentIds.size} present",
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(horizontal = 20.dp, vertical = 2.dp)
         )
-// ── Student List
+// Student List
         if (filteredStudents.isEmpty()) {
             Box(
                 modifier = Modifier.fillMaxSize(),
@@ -127,7 +127,7 @@ fun AttendanceScreen() {
         }
     }
 }
-// ─── Student Card
+//Student Card
 @Composable
 fun StudentAttendanceCard(
     student: Student,
@@ -151,7 +151,7 @@ fun StudentAttendanceCard(
                 .padding(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ){
-// ── Photo
+// Photo
         Image(
             painter = painterResource(student.photoRes),
             contentDescription = "Photo of ${student.name}",
@@ -161,7 +161,7 @@ fun StudentAttendanceCard(
                 .clip(CircleShape)
         )
         Spacer(modifier = Modifier.height(12.dp))
-// ── Name
+// Name
         Text(
             text = student.name,
             style = MaterialTheme.typography.titleLarge,
@@ -169,14 +169,14 @@ fun StudentAttendanceCard(
             color = MaterialTheme.colorScheme.onSurface
         )
         Spacer(modifier = Modifier.height(2.dp))
-// ── Reg Number
+// Reg Number
         Text(
             text = student.regNo,
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
         Spacer(modifier = Modifier.height(8.dp))
-// ── Verified badge
+// Verified badge
         if (student.isVerified) {
             Text(
                 text = "Verified",
@@ -192,7 +192,7 @@ fun StudentAttendanceCard(
             )
         }
         Spacer(modifier = Modifier.height(12.dp))
-// ── Mark Present Button
+//Mark Present Button
         Button(
             onClick = onMarkPresent,
             enabled = !isPresent,
@@ -212,8 +212,11 @@ fun StudentAttendanceCard(
     }
     }
 }
-// ─── Preview
-@Preview(showBackground = true)
+
+@Preview(showBackground = true,
+
+    heightDp = 1700
+)
 @Composable
 fun AttendancePreview() {
     NdejjeWelcomeAppTheme {
